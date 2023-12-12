@@ -1,4 +1,5 @@
-arrays = require("randomness.arrays")
+local config = require("randomness.config")
+local arrays = require("randomness.arrays")
 
 local M = {}
 
@@ -13,8 +14,11 @@ end
 ---@param min integer
 ---@param max integer
 ---@param count integer
----@return table of type `randomness.arrays.Array`
-function M:Integers(min, max, count)
+---@param conf ConfigDefaultsArray
+---@return Array
+function M:Integers(min, max, count, conf)
+	conf = conf or config.DefaultConfig().defaults.arrays
+
 	local values = {}
 	if count > 0 then
 		for _ = 0,count - 1 do
@@ -22,7 +26,7 @@ function M:Integers(min, max, count)
 			table.insert(values, value)
 		end
 	end
-	return arrays:New(values, ",", "[", "]")
+	return arrays:New(values, conf.delimiter, conf.openingBracket, conf.closingBracket)
 end
 
 return M

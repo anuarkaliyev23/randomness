@@ -1,3 +1,4 @@
+local config = require("randomness.config")
 local numbers = require("randomness.numbers")
 local lu = require("luaunit")
 
@@ -25,13 +26,19 @@ end
 TestIntegers = {}
 
 function TestIntegers:testZeroCount()
-	local array = numbers:Integers(0, 10, 0)
+	local array = numbers:Integers(0, 10, 0, config.DefaultConfig())
 	lu.assertEquals(array.values, {})
+	lu.assertEquals(array.openingBracket, "[")
+	lu.assertEquals(array.closingBracket, "]")
+	lu.assertEquals(array.delimiter, ",")
 end
 
 function TestIntegers:testValidCases()
-	local array = numbers:Integers(0, 10, 10)
+	local array = numbers:Integers(0, 10, 10, config.DefaultConfig())
 	lu.assertEquals(#array.values, 10)
+	lu.assertEquals(array.openingBracket, "[")
+	lu.assertEquals(array.closingBracket, "]")
+	lu.assertEquals(array.delimiter, ",")
 end
 
 os.exit( lu.LuaUnit.run() )

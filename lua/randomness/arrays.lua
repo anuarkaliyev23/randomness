@@ -1,3 +1,9 @@
+
+---@class Array
+---@field values table
+---@field delimiter string
+---@field openingBracket string
+---@field closingBracket string
 Array = {
 	values = {},
 	delimiter = ",",
