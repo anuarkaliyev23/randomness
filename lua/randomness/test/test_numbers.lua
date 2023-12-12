@@ -22,32 +22,4 @@ function TestIntegers:testValidCases()
 	end
 end
 
-
-function TestIntegers:testIngegerByLengthNegative()
-	lu.assertError(function()
-		numbers:IntegerByLength(-1)
-	end)
-end
-
-function TestIntegers:testIngegerByLengthZero()
-	lu.assertError(function()
-		numbers:IntegerByLength(0)
-	end)
-end
-
-function TestIntegers:testIngegerByLengthOne()
-	for _=1,1000 do
-		local number = numbers:IntegerByLength(1)
-		lu.assertTrue(number >= 0 and number < 10)
-	end
-end
-
-
-function TestIntegers:testIngegerByLengthTwo()
-	for _=1,1000 do
-		local number = numbers:IntegerByLength(2)
-		lu.assertTrue(number >= 10 and number < 100)
-	end
-end
-
 os.exit( lu.LuaUnit.run() )

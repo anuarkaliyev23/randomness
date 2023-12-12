@@ -5,8 +5,9 @@ start:
 	nvim --cmd "set rtp+=./"
 
 test:
-	chmod +x ./run-tests.sh
-	./run-tests.sh
+	(cd lua \
+		&& lua "$(TEST_FOLDER)/test_arrays.lua" \
+		&& lua "$(TEST_FOLDER)/test_numbers.lua")
 	
 lint:
 	luacheck lua/
