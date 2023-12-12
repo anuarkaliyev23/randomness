@@ -1,6 +1,7 @@
 
 --- @class Config
 --- @field defaults ConfigDefaults
+--- @field logLevel string
 --
 --- @class ConfigDefaults
 --- @field integers ConfigDefaultsInteger
@@ -15,6 +16,7 @@
 --- @field openingBracket string 
 --- @field closingBracket string
 Config = {
+	logLevel = 'info',
 	defaults = {
 		integers = {
 			min = 0,

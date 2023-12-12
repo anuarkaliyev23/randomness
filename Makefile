@@ -7,7 +7,8 @@ start:
 test:
 	(cd lua \
 		&& lua "$(TEST_FOLDER)/test_arrays.lua" \
-		&& lua "$(TEST_FOLDER)/test_numbers.lua")
+		&& lua "$(TEST_FOLDER)/test_numbers.lua"\
+		&& lua "$(TEST_FOLDER)/test_strings.lua")
 	
 lint:
 	luacheck lua/
