@@ -1,6 +1,6 @@
 # Randomness plugin for Neovim
 
-> ⚠️a Work in progress
+> ⚠️a Work in progress  
 > Required Neovim version: 0.1.0+
 
 This plugin allows random values:
