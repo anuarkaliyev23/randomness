@@ -1,7 +1,7 @@
 local rstrings = require("randomness.strings")
 local lu = require("luaunit")
 local utils = require("randomness.utils")
-
+local logger = require("randomness.logger")
 -- TestRandomCharsets = {}
 -- function TestRandomCharsets:testValidCases()
 -- 	local charset1 = 'abcdefg'
@@ -27,8 +27,6 @@ local utils = require("randomness.utils")
 -- 		lu.assertNotNil(charset:find(rc))
 -- 	end
 -- end
-
-
 
 
 

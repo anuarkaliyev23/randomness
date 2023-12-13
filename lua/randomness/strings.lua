@@ -34,7 +34,7 @@ end
 local function populateCharsets(options)
 	local charsets = {}
 
-	if options.allowLetters then 
+	if options.allowLetters then
 		table.insert(charsets, letters)
 	end
 

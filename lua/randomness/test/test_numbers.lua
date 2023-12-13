@@ -26,7 +26,7 @@ end
 TestIntegers = {}
 
 function TestIntegers:testZeroCount()
-	local array = numbers:Integers(0, 10, 0, config.DefaultConfig())
+	local array = numbers:Integers(0, 10, 0, config:New().defaults.arrays)
 	lu.assertEquals(array.values, {})
 	lu.assertEquals(array.openingBracket, "[")
 	lu.assertEquals(array.closingBracket, "]")
@@ -34,7 +34,7 @@ function TestIntegers:testZeroCount()
 end
 
 function TestIntegers:testValidCases()
-	local array = numbers:Integers(0, 10, 10, config.DefaultConfig())
+	local array = numbers:Integers(0, 10, 10, config:New().defaults.arrays)
 	lu.assertEquals(#array.values, 10)
 	lu.assertEquals(array.openingBracket, "[")
 	lu.assertEquals(array.closingBracket, "]")

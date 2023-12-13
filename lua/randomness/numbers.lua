@@ -17,7 +17,7 @@ end
 ---@param conf ConfigDefaultsArray
 ---@return Array
 function M:Integers(min, max, count, conf)
-	conf = conf or config.DefaultConfig().defaults.arrays
+	conf = conf or config:New().defaults.arrays
 
 	local values = {}
 	if count > 0 then

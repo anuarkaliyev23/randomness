@@ -1,3 +1,4 @@
+local utils = require("randomness.utils")
 
 --- @class Config
 --- @field defaults ConfigDefaults
@@ -30,11 +31,12 @@ Config = {
 		}
 	}
 }
-Config.__index = Config
 
---- @return table default configuration
-function Config.DefaultConfig()
-	return Config
+--- @return Config
+function Config:New()
+	local config = utils.tableDeepCopy(Config)
+	return config
 end
+
 
 return Config
