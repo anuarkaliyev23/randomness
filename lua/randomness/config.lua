@@ -16,6 +16,7 @@ local utils = require("randomness.utils")
 --- @field delimiter string
 --- @field openingBracket string 
 --- @field closingBracket string
+--- @field length integer
 Config = {
 	logLevel = 'info',
 	defaults = {
@@ -28,6 +29,7 @@ Config = {
 			delimiter = ",",
 			openingBracket = "[",
 			closingBracket =  "]",
+			length = 10,
 		}
 	}
 }
