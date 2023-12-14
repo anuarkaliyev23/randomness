@@ -4,7 +4,7 @@
 > Work in progress  
 > Required Neovim version: 0.1.0+
 
-This plugin allows random values:
+This plugin allows generating random values:
 
 - [x] integers
 - [ ] strings

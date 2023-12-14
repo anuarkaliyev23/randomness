@@ -36,7 +36,7 @@ function Randomness.Integer(self, min, max)
 		max = self.config.defaults.integers.max
 	end
 
-	local number = numbers:Integer(min, max)
+	local number = numbers.Integer(self, min, max)
 	insertUnderCursor(number)
 end
 
@@ -48,6 +48,18 @@ end
 function Randomness.Integers(self, min, max, count, arrayConfiguration)
 	if not arrayConfiguration then
 		arrayConfiguration = self.config.defaults.arrays
+	end
+
+	if not min then
+		min = self.config.defaults.integers.min
+	end
+
+	if not max then
+		max = self.config.defaults.integers.max
+	end
+
+	if not count then
+		count = self.config.defaults.arrays.length
 	end
 
 	local ns = numbers:Integers(min, max, count, arrayConfiguration)
