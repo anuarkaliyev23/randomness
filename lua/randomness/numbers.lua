@@ -14,9 +14,9 @@ end
 ---@param min integer
 ---@param max integer
 ---@param count integer
----@param conf ConfigDefaultsArray
+---@param arrayOptions ArrayOptions
 ---@return Array
-function M:Integers(min, max, count, conf)
+function M:Integers(min, max, count, arrayOptions)
 	local values = {}
 	if count > 0 then
 		for _ = 0,count - 1 do
@@ -24,7 +24,7 @@ function M:Integers(min, max, count, conf)
 			table.insert(values, value)
 		end
 	end
-	return arrays:New(values, conf.delimiter, conf.openingBracket, conf.closingBracket)
+	return arrays:New(values, arrayOptions)
 end
 
 return M

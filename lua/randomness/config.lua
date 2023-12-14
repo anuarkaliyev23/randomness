@@ -13,10 +13,12 @@ local utils = require("randomness.utils")
 --- @field max integer
 -- 
 --- @class ConfigDefaultsArray
---- @field delimiter string
---- @field openingBracket string 
---- @field closingBracket string
+--- @field options ArrayOptions
 --- @field length integer
+--
+--- @class ConfigDefaultString
+--- @field length integer
+--- @field options StringOptions
 Config = {
 	logLevel = 'info',
 	defaults = {
@@ -26,10 +28,20 @@ Config = {
 		},
 
 		arrays = {
-			delimiter = ",",
-			openingBracket = "[",
-			closingBracket =  "]",
+			options = {
+				delimiter = ",",
+				openingBracket = "[",
+				closingBracket =  "]",
+			},
 			length = 10,
+		},
+
+		strings = {
+			length = 12,
+			options = {
+				allowLetters = true,
+				allowDigits = false,
+			}
 		}
 	}
 }

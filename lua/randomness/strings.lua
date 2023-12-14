@@ -1,4 +1,5 @@
 local logger = require("randomness.logger")
+local arrays = require("randomness.arrays")
 
 M = {}
 
@@ -6,10 +7,7 @@ M = {}
 ---@field allowLetters boolean
 ---@field allowDigits boolean
 
-Options = {
-	allowLetters = true,
-	allowDigits = false,
-}
+Options = {}
 Options.__index = Options
 
 
@@ -47,7 +45,7 @@ end
 
 ---@param length integer
 ---@param options StringOptions 
-function M:string(length, options)
+function M:String(length, options)
 	local s = ""
 	local charsets = populateCharsets(options)
 
@@ -58,6 +56,18 @@ function M:string(length, options)
 	end
 
 	return s
+end
+
+--- @param stringLength integer
+--- @param options StringOptions
+--- @param arrayLength integer
+--- @param arrayOptions ArrayOptions
+function M:Strings(stringLength, options, arrayLength, arrayOptions)
+	local values = {}
+	for _ = 1, arrayLength do
+		local s = M:string(stringLength, options)
+	end
+	return arrays:New(values, arrayOptions)
 end
 
 return M

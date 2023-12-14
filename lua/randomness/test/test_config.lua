@@ -21,9 +21,9 @@ function TestNew:testObjectModificationAfterCreation()
 	config1.defaults.integers.min = -1000
 	config1.defaults.integers.max = 1000
 
-	config2.defaults.arrays.delimiter = ";"
-	config2.defaults.arrays.openingBracket = "{"
-	config2.defaults.arrays.closingBracket = "}"
+	config2.defaults.arrays.options.delimiter = ";"
+	config2.defaults.arrays.options.openingBracket = "{"
+	config2.defaults.arrays.options.closingBracket = "}"
 
 	lu.assertEquals(config1.logLevel, 'debug')
 	lu.assertEquals(config2.logLevel, 'error')
@@ -33,13 +33,13 @@ function TestNew:testObjectModificationAfterCreation()
 	lu.assertEquals(config2.defaults.integers.min, 0)
 	lu.assertEquals(config2.defaults.integers.max, 100)
 
-	lu.assertEquals(config1.defaults.arrays.delimiter, ",")
-	lu.assertEquals(config1.defaults.arrays.openingBracket, "[")
-	lu.assertEquals(config1.defaults.arrays.closingBracket, "]")
+	lu.assertEquals(config1.defaults.arrays.options.delimiter, ",")
+	lu.assertEquals(config1.defaults.arrays.options.openingBracket, "[")
+	lu.assertEquals(config1.defaults.arrays.options.closingBracket, "]")
 
-	lu.assertEquals(config2.defaults.arrays.delimiter, ";")
-	lu.assertEquals(config2.defaults.arrays.openingBracket, "{")
-	lu.assertEquals(config2.defaults.arrays.closingBracket, "}")
+	lu.assertEquals(config2.defaults.arrays.options.delimiter, ";")
+	lu.assertEquals(config2.defaults.arrays.options.openingBracket, "{")
+	lu.assertEquals(config2.defaults.arrays.options.closingBracket, "}")
 end
 
 os.exit( lu.LuaUnit.run() )

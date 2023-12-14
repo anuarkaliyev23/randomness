@@ -43,11 +43,11 @@ end
 --- @param min integer
 --- @param max integer
 --- @param count integer
---- @param arrayConfiguration ConfigDefaultsArray
+--- @param arrayOptions ArrayOptions
 -- Generates integer array of given `count` length. Every integer will be in [min, max] range.
-function Randomness.Integers(self, min, max, count, arrayConfiguration)
-	if not arrayConfiguration then
-		arrayConfiguration = self.config.defaults.arrays
+function Randomness.Integers(self, min, max, count, arrayOptions)
+	if not arrayOptions then
+		arrayOptions = self.config.defaults.arrays.options
 	end
 
 	if not min then
@@ -62,7 +62,7 @@ function Randomness.Integers(self, min, max, count, arrayConfiguration)
 		count = self.config.defaults.arrays.length
 	end
 
-	local ns = numbers:Integers(min, max, count, arrayConfiguration)
+	local ns = numbers:Integers(min, max, count, arrayOptions)
 	insertUnderCursor(ns:ToString())
 end
 

@@ -38,7 +38,7 @@ function TestString:testOnlyLetters()
 	}
 
 	for _ = 1, 1000 do
-		local s = rstrings:string(10, options)
+		local s = rstrings:String(10, options)
 		lu.assertNotEquals(s, nil)
 
 		lu.assertEquals(10, s:len())
@@ -55,7 +55,7 @@ function TestString:testAlphanumerical()
 	}
 
 	for _ = 1, 1000 do
-		local s = rstrings:string(10, options)
+		local s = rstrings:String(10, options)
 		lu.assertNotEquals(s, nil)
 
 		lu.assertEquals(10, s:len())
@@ -73,7 +73,7 @@ function TestString:testOnlyDigits()
 	}
 
 	for _ = 1, 1000 do
-		local s = rstrings:string(10, options)
+		local s = rstrings:String(10, options)
 		lu.assertNotEquals(s, nil)
 
 		lu.assertEquals(10, s:len())
@@ -82,6 +82,8 @@ function TestString:testOnlyDigits()
 		lu.assertEquals(utils.letterMatchCount(s, forbidden), 0)
 	end
 end
+
+
 
 
 
