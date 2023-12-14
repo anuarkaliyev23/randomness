@@ -18,8 +18,9 @@ end
 ---@return Array
 function M:Integers(min, max, count, conf)
 	conf = conf or config:New().defaults.arrays
+
 	if not count then
-		count = conf.defaults.arrays.length
+		count = conf.length
 	end
 
 	local values = {}
