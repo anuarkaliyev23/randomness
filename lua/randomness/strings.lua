@@ -65,7 +65,8 @@ end
 function M:Strings(stringLength, options, arrayLength, arrayOptions)
 	local values = {}
 	for _ = 1, arrayLength do
-		local s = M:string(stringLength, options)
+		local s = M:String(stringLength, options)
+		table.insert(values, s)
 	end
 	return arrays:New(values, arrayOptions)
 end

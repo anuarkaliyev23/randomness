@@ -84,7 +84,25 @@ function TestString:testOnlyDigits()
 end
 
 
+function TestString:testStrings()
+	local options = {
+		allowLetters = true,
+		allowDigits = true,
+	}
 
+	local arrayOptions = {
+		delimiter = ",",
+		openingBracket = "[",
+		closingBracket = "]",
+	}
 
+	for _ = 1, 1000 do
+		local s = rstrings:Strings(10, options, 10, arrayOptions)
+		lu.assertEquals(#s.values, 10)
+		for i = 1, 10 do
+			lu.assertEquals(string.len(s.values[i]), 10)
+		end
+	end
+end
 
 os.exit( lu.LuaUnit.run() )
