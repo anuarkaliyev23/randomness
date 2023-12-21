@@ -7,7 +7,8 @@ local utils = require("randomness.utils")
 --- @class ConfigDefaults
 --- @field integers ConfigDefaultsInteger
 --- @field arrays ConfigDefaultsArray
--- 
+--- @field strings ConfigDefaultString 
+--
 --- @class ConfigDefaultsInteger
 --- @field min integer
 --- @field max integer
@@ -41,8 +42,10 @@ Config = {
 			options = {
 				allowLetters = true,
 				allowDigits = false,
+				quotes = '"'
 			}
 		}
+
 	}
 }
 

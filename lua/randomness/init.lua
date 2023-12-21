@@ -1,6 +1,7 @@
 local logger = require("randomness.logger")
 local conf = require("randomness.config")
 local numbers = require("randomness.numbers")
+local strings = require("randomness.strings")
 
 --- @class Randomness
 --- @field config Config
@@ -13,6 +14,16 @@ local function insertUnderCursor(s)
 	local line = vim.api.nvim_get_current_line()
 	local nline = line:sub(0, pos) .. s .. line:sub(pos + 1)
 	vim.api.nvim_set_current_line(nline)
+end
+
+---@param value any
+---@param default any
+---@return any value if value is set, default otherwise
+local function valueOrDefault(value, default)
+	if not value then
+		return default
+	end
+	return value
 end
 
 --- @param config Config
@@ -64,6 +75,38 @@ function Randomness.Integers(self, min, max, count, arrayOptions)
 
 	local ns = numbers:Integers(min, max, count, arrayOptions)
 	insertUnderCursor(ns:ToString())
+end
+
+--- @param length integer
+--- @param stringOptions StringOptions
+-- Generates random string and inserts it under current cursor position
+function Randomness.String(self, length, stringOptions)
+	if not stringOptions then
+		stringOptions = self.config.defaults.strings.options
+	end
+
+	if not length then
+		length = self.config.defaults.strings.length
+	end
+
+	local s = strings:String(length, stringOptions)
+	insertUnderCursor(s)
+end
+
+
+--- @param length integer
+--- @param stringOptions StringOptions
+--- @param count integer
+--- @param arrayOptions ArrayOptions
+-- Generates random strings array and inserts it under current cursor position
+function Randomness.Strings(self, length, stringOptions, count, arrayOptions)
+	length = valueOrDefault(length, self.config.defaults.strings.length)
+	stringOptions = valueOrDefault(stringOptions, self.config.defaults.strings.options)
+	count = valueOrDefault(count, self.config.defaults.arrays.length)
+	arrayOptions = valueOrDefault(arrayOptions, self.config.defaults.arrays.options)
+
+	local sArray = strings:Strings(length, stringOptions, count, arrayOptions)
+	insertUnderCursor(sArray:ToString())
 end
 
 return Randomness

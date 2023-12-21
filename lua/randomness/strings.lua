@@ -6,7 +6,7 @@ M = {}
 ---@class StringOptions
 ---@field allowLetters boolean
 ---@field allowDigits boolean
-
+---@field quotes string
 Options = {}
 Options.__index = Options
 
@@ -49,10 +49,18 @@ function M:String(length, options)
 	local s = ""
 	local charsets = populateCharsets(options)
 
+	if options.quotes then
+		s = s .. options.quotes
+	end
+
 	for _ = 0, length - 1 do
 		local charset = randomCharset(charsets)
 		local char = randomCharacter(charset)
 		s = s .. char
+	end
+
+	if options.quotes then
+		s = s .. options.quotes
 	end
 
 	return s

@@ -2,6 +2,7 @@ local rstrings = require("randomness.strings")
 local lu = require("luaunit")
 local utils = require("randomness.utils")
 local logger = require("randomness.logger")
+
 -- TestRandomCharsets = {}
 -- function TestRandomCharsets:testValidCases()
 -- 	local charset1 = 'abcdefg'
@@ -81,6 +82,20 @@ function TestString:testOnlyDigits()
 
 		lu.assertEquals(utils.letterMatchCount(s, forbidden), 0)
 	end
+end
+
+function TestString:testQuotes()
+	local options = {
+		allowLetters = true,
+		allowDigits = true,
+		quotes = '"',
+	}
+
+	local s = rstrings:String(10, options)
+
+	lu.assertEquals(12, s:len())
+	lu.assertEquals(string.sub(s, 1, 1), '"')
+	lu.assertEquals(string.sub(s, 12, 12), '"')
 end
 
 
