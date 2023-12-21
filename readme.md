@@ -7,7 +7,7 @@
 This plugin allows generating random values:
 
 - [x] integers
-- [ ] strings
+- [x] strings
 - [ ] UUID
 - [ ] hex
 
@@ -72,9 +72,10 @@ API exposes several methods to generate random values
 ```lua
 randomness = require("randomness")
 
+-- IN ALL CASES, PARAMETERS WILL BE SUBSTITUTED WITH DEFAULTS IF OMITTED
+
 --- @param min integer
 --- @param max integer
--- Parameters will be substituted with defaults if being omitted
 -- Generates random integer in range [min, max]
 randomness:Integer(min, max)
 
@@ -82,10 +83,25 @@ randomness:Integer(min, max)
 --- @param max integer
 --- @param count integer
 --- @param arrayConfig table -- specifies how array should be serialized to string
--- Parameters will be substituted with defaults if being omitted
 -- Generates integer array of given `count` length. Every integer will be in [min, max] range.
 randomness:Integers(min, max, count, arrayConfig)
+
+
+--- @param length integer
+--- @param stringOptions StringOptions
+-- Generates random string and inserts it under current cursor position
+randomness:String(length, stringOptions)
+
+
+--- @param length integer
+--- @param stringOptions StringOptions
+--- @param count integer
+--- @param arrayOptions ArrayOptions
+-- Generates random strings array and inserts it under current cursor position
+randomness.Strings(length, stringOptions, count, arrayOptions)
 ```
+
+More detailed API and function signature can be found at [`init.lua`](lua/randomness/init.lua)
 
 This API methods should be remapped to your preference.
 

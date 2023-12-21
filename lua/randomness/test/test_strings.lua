@@ -2,6 +2,7 @@ local rstrings = require("randomness.strings")
 local lu = require("luaunit")
 local utils = require("randomness.utils")
 local logger = require("randomness.logger")
+
 -- TestRandomCharsets = {}
 -- function TestRandomCharsets:testValidCases()
 -- 	local charset1 = 'abcdefg'
@@ -38,7 +39,7 @@ function TestString:testOnlyLetters()
 	}
 
 	for _ = 1, 1000 do
-		local s = rstrings:string(10, options)
+		local s = rstrings:String(10, options)
 		lu.assertNotEquals(s, nil)
 
 		lu.assertEquals(10, s:len())
@@ -55,7 +56,7 @@ function TestString:testAlphanumerical()
 	}
 
 	for _ = 1, 1000 do
-		local s = rstrings:string(10, options)
+		local s = rstrings:String(10, options)
 		lu.assertNotEquals(s, nil)
 
 		lu.assertEquals(10, s:len())
@@ -73,7 +74,7 @@ function TestString:testOnlyDigits()
 	}
 
 	for _ = 1, 1000 do
-		local s = rstrings:string(10, options)
+		local s = rstrings:String(10, options)
 		lu.assertNotEquals(s, nil)
 
 		lu.assertEquals(10, s:len())
@@ -83,6 +84,40 @@ function TestString:testOnlyDigits()
 	end
 end
 
+function TestString:testQuotes()
+	local options = {
+		allowLetters = true,
+		allowDigits = true,
+		quotes = '"',
+	}
 
+	local s = rstrings:String(10, options)
+
+	lu.assertEquals(12, s:len())
+	lu.assertEquals(string.sub(s, 1, 1), '"')
+	lu.assertEquals(string.sub(s, 12, 12), '"')
+end
+
+
+function TestString:testStrings()
+	local options = {
+		allowLetters = true,
+		allowDigits = true,
+	}
+
+	local arrayOptions = {
+		delimiter = ",",
+		openingBracket = "[",
+		closingBracket = "]",
+	}
+
+	for _ = 1, 1000 do
+		local s = rstrings:Strings(10, options, 10, arrayOptions)
+		lu.assertEquals(#s.values, 10)
+		for i = 1, 10 do
+			lu.assertEquals(string.len(s.values[i]), 10)
+		end
+	end
+end
 
 os.exit( lu.LuaUnit.run() )

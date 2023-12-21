@@ -7,16 +7,19 @@ local utils = require("randomness.utils")
 --- @class ConfigDefaults
 --- @field integers ConfigDefaultsInteger
 --- @field arrays ConfigDefaultsArray
--- 
+--- @field strings ConfigDefaultString 
+--
 --- @class ConfigDefaultsInteger
 --- @field min integer
 --- @field max integer
 -- 
 --- @class ConfigDefaultsArray
---- @field delimiter string
---- @field openingBracket string 
---- @field closingBracket string
+--- @field options ArrayOptions
 --- @field length integer
+--
+--- @class ConfigDefaultString
+--- @field length integer
+--- @field options StringOptions
 Config = {
 	logLevel = 'info',
 	defaults = {
@@ -26,11 +29,23 @@ Config = {
 		},
 
 		arrays = {
-			delimiter = ",",
-			openingBracket = "[",
-			closingBracket =  "]",
+			options = {
+				delimiter = ",",
+				openingBracket = "[",
+				closingBracket =  "]",
+			},
 			length = 10,
+		},
+
+		strings = {
+			length = 12,
+			options = {
+				allowLetters = true,
+				allowDigits = false,
+				quotes = '"'
+			}
 		}
+
 	}
 }
 

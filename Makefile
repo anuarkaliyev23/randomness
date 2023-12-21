@@ -2,7 +2,7 @@ LUA_ROOT =lua
 TEST_FOLDER =randomness/test
 
 start:
-	nvim --cmd "set rtp+=./"
+	nvim --cmd "set rtp+=./" --clean
 
 test:
 	(cd lua \
