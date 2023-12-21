@@ -20,6 +20,7 @@ local utils = require("randomness.utils")
 --- @class ConfigDefaultString
 --- @field length integer
 --- @field options StringOptions
+--- @field quotes string
 Config = {
 	logLevel = 'info',
 	defaults = {

@@ -55,10 +55,23 @@ config = {
 		},
 
 		arrays = {
-			delimiter = ",",
-			openingBracket = "[",
-			closingBracket =  "]",
+			options = {
+				delimiter = ",",
+				openingBracket = "[",
+				closingBracket =  "]",
+			},
+			length = 10,
+		},
+
+		strings = {
+			length = 12,
+			options = {
+				allowLetters = true,
+				allowDigits = false,
+				quotes = '"'
+			}
 		}
+
 	}
 }
 ```
